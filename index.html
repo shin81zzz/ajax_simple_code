@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Sample</title>
+</head>
+
+<body>
+    <h1>Ajax Sample</h1>
+    <p id="demo"></p>
+    <button type="button" onclick="demoAjax()">Ajax Start</button>
+
+    <script type="text/javascript">
+        function demoAjax() {
+            // オブジェクト生成
+            var xhttp = new XMLHttpRequest();
+
+            // 状態変化した時に実行する関数の定義
+            xhttp.onreadystatechange = function () {
+                // readyState == 4 : レスポンス準備完了
+                // status == 200 : ステータス "OK"
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            }
+
+            // リクエスト送信
+            xhttp.open("GET", "ajax.txt", true);
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>
